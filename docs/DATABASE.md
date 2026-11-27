@@ -17,3 +17,22 @@ The API status endpoint can run without a database connection.
 
 Amounts are stored as `numeric(18,2)` in EUR. Transaction dates use `yyyy-MM-dd`.
 Budgets and reports store the first day of the month. Timestamps are UTC.
+
+Check the connection:
+
+```powershell
+dotnet run --project src/Eelarveanaluutik.Api --launch-profile http -- --check-database
+```
+
+## Sample data
+
+To add fictional sample data in Development:
+
+```powershell
+dotnet user-secrets set "SeedDemoData" "true" --project src/Eelarveanaluutik.Api
+dotnet ef database update --project src/Eelarveanaluutik.Api -- --environment Development
+dotnet user-secrets remove "SeedDemoData" --project src/Eelarveanaluutik.Api
+```
+
+This adds three categories, three transactions, a budget and a Rimi category rule.
+Repeated runs preserve existing records and edits. The sample user has no login password.
