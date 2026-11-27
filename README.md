@@ -39,3 +39,18 @@ dotnet run --project src/Eelarveanaluutik.Worker
 ## Database
 
 See [database setup](docs/DATABASE.md) for connection and migration commands.
+
+## Tests
+
+```powershell
+dotnet test Eelarveanaluutik.sln
+```
+
+Database integration tests run when `TEST_POSTGRES_CONNECTION` is set.
+Use a separate test database with permission to create schemas.
+
+```powershell
+$env:TEST_POSTGRES_CONNECTION = "YOUR_POSTGRESQL_CONNECTION_STRING"
+dotnet test Eelarveanaluutik.sln
+Remove-Item Env:TEST_POSTGRES_CONNECTION
+```
