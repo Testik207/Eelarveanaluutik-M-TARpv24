@@ -35,3 +35,7 @@ Worker, in a separate terminal:
 ```powershell
 dotnet run --project src/Eelarveanaluutik.Worker
 ```
+
+## Database
+
+See [database setup](docs/DATABASE.md) for connection and migration commands.
